@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Write(./outputs/**)",
+      "Write(./projects/**)",
+      "Edit(./board.md)",
+      "Edit(./memory.md)",
+      "Edit(./outputs/**)",
+      "Edit(./projects/**)",
+      "Bash(ls:*)",
+      "Bash(date)"
+    ],
+    "deny": [
+      "Bash(rm:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(git push:*)",
+      "Bash(sudo:*)",
+      "Read(./.env)",
+      "Read(./.env.*)"
+    ]
+  }
+}
