@@ -9,7 +9,8 @@ Claude Code に「判断軸・仕事ボード・実行チーム・定期実行�
 | `memory.md` | 学習メモ（失敗と修正） |
 | `.claude/agents/maker.md` / `checker.md` | 作る担当 / チェック担当 |
 | `.claude/commands/interview.md` | `/interview` で初期インタビュー |
-| `.claude/settings.json` | 権限（読み取り＋outputs/projects への書き込みのみ、削除・送信は禁止） |
+| `.claude/settings.json` | 権限（読み取り＋outputs/projects への書き込みのみ。削除・外部への通信・sudo は禁止。git push は可） |
+| `outputs/release/<名前>/` | 公開キット。Muse が `MUSE.md` の手順で note に公開し、Instagram で告知する |
 | `scripts/run.sh` | 定期実行用 |
 
 ## 使い始める

@@ -135,6 +135,16 @@
   .wire.s { width: 26px; }
   .par .dev { min-width: 150px; }
   .calc { font-size: 25px; line-height: 1.6; }
+  /* instagram square 1080x1080 */
+  #insta { width: 540px; height: 540px; position: relative; overflow: hidden; margin-bottom: 40px;
+           background: linear-gradient(160deg, #1e3a8a 0%, #2563eb 65%, #3b82f6 100%); color: #fff; }
+  #insta .inner { position: absolute; inset: 0; padding: 40px 38px; display: flex; flex-direction: column; }
+  #insta .small { font-size: 20px; opacity: .9; }
+  #insta .title { font-size: 46px; font-weight: bold; line-height: 1.25; margin-top: 14px; }
+  #insta .sub { font-size: 21px; margin-top: 16px; line-height: 1.5; opacity: .95; }
+  #insta .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+  #insta .chip { font-size: 17px; background: rgba(255,255,255,.16); border: 1.5px solid rgba(255,255,255,.55); padding: 5px 12px; border-radius: 999px; }
+  #insta .foot { margin-top: 18px; font-size: 20px; font-weight: bold; background: #fff; color: #1e3a8a; padding: 10px 16px; border-radius: 12px; align-self: flex-start; }
 </style>
 </head>
 <body>
@@ -342,6 +352,20 @@
     ② 装置Aと直列：0.9 × 0.96 ＝ <span class="ok">0.864</span>
   </div>
   <div class="note">稼働率 ＝ MTBF ÷（MTBF ＋ MTTR）<br>装置A：450 ÷ 500 ＝ 0.9　装置B：320 ÷ 400 ＝ 0.8</div>
+</div>
+
+<!-- ======================= INSTAGRAM 1080x1080 ======================= -->
+<div id="insta">
+  <div class="inner">
+    <div class="small">基本情報技術者試験（FE）</div>
+    <div class="title">科目A 7分野を<br>1本で見直す<br>要点まとめ</div>
+    <div class="sub">要点・覚え方・間違えやすいポイント<br>自作例題7問と図解つき</div>
+    <div class="chips">
+      <span class="chip">基数変換</span><span class="chip">スタック</span><span class="chip">キャッシュ</span>
+      <span class="chip">OSI</span><span class="chip">暗号と署名</span><span class="chip">SQL</span><span class="chip">稼働率</span>
+    </div>
+    <div class="foot">note で公開中 ／ 500円</div>
+  </div>
 </div>
 
 </body>

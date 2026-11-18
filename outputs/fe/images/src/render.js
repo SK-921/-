@@ -15,6 +15,7 @@ const targets = [
   ['#fig5', '05-keys.png'],
   ['#fig6', '06-sql-order.png'],
   ['#fig7', '07-availability.png'],
+  ['#insta', '08-instagram.png'],
 ];
 
 (async () => {
