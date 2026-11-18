@@ -15,6 +15,6 @@
 | FE要点まとめ 宣伝文3案 | 未着手 | prompts.md の3を実行 → 本人が選ぶ | 2026-11-22 23:59 | 投稿はしない |
 | FE要点まとめ 公開キット | 完了 | outputs/release/fe-vol1/（MUSE.md・原稿・画像・Instagram 投稿文） | 2026-11-22 23:59 | 作り直すときは scripts/make_release.py |
 | FE要点まとめ 公開 | 未着手 | 【Muse】MUSE.md の手順で note に公開 → Instagram で告知（本人の OK が必要） | 2026-11-23 23:59 | Jarvis は操作しない |
-| AI活用シリーズ vol1（Jarvis の作り方） | 進行中 | maker で下書き → checker → 公開キット | 2026-11-20 23:59 | テーマの理由は projects/earn/research.md。売上など、まだ起きていないことは書かない |
+| AI活用シリーズ vol1（AI秘書の作り方） | 確認待ち | 公開キット完成（outputs/release/ai-vol1）。【本人】Muse の名前を出すか・Jarvis の名前を使うかを決める → Muse が公開 | 2026-11-20 23:59 | checker 2回で合格（outputs/ai/vol1/checked.txt） |
 | 毎日の無料記事 | 毎日 | scripts/run.sh daily（prompts.md の5） | 毎日 07:20 | outputs/release/daily/日付/ に置く → Muse が公開 |
 | 売上の集計 | 毎週 | prompts.md の4を実行 | 毎週月曜 09:00 | sales.csv は本人が更新 |
