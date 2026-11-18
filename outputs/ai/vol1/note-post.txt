@@ -7,7 +7,7 @@
 ハッシュタグ：#ClaudeCode #AI活用 #AI秘書 #生成AI #専門学校生 #Claude
 見出し画像：00-cover.png（記事の一番上の「画像を追加」から設定）
 
-※ 00-cover.png はまだ作っていません。作ったら outputs/ai/vol1/images/ に置く。
+※ 00-cover.png は outputs/ai/vol1/images/ にあります（元ファイルは images/src/cover.html）。
 
 タイトル案（3つ。上の「タイトル：」は案1）
 ・案1（採用）：専門学校生が Claude Code で自分専用のAI秘書を作った記録 ― 実際の設定ファイルと失敗のログつき
