@@ -18,7 +18,7 @@ Claude Code に「判断軸・仕事ボード・実行チーム・定期実行�
    ```bash
    curl -fsSL https://claude.ai/install.sh | bash
    ```
-2. このリポジトリを clone して中で `claude` を起動
+2. このリポジトリを clone して中で `claude` を起動し、**「このフォルダを信頼しますか」で承認する**（承認しないと `settings.json` の許可設定が無視され、自動実行でボードを更新できません）
 3. `/interview` と打ってインタビューに答える → CLAUDE.md と board.md が出来上がる
 4. まずは手動で「board.md を見て今日やることを整理して」と頼む
 
