@@ -26,9 +26,10 @@ esac
 
 claude -p "$PROMPT" >> "$LOG" 2>&1
 
-# 有料記事の原稿ができていれば、公開キットに分ける（まだキットがない号だけ）
+# チェックに合格した号（checked.txt がある号）だけ、公開キットに分ける（まだキットがない号だけ）
 for post in outputs/ai/vol*/note-post.txt; do
   [ -f "$post" ] || continue
+  [ -f "$(dirname "$post")/checked.txt" ] || continue
   vol=$(basename "$(dirname "$post")")
   kit="outputs/release/ai-$vol"
   if [ ! -d "$kit" ]; then

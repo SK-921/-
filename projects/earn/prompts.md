@@ -57,7 +57,9 @@ CLAUDE.md、memory.md、projects/earn/research.md、projects/earn/daily-log.md �
 CLAUDE.md、memory.md、projects/earn/research.md、projects/earn/plan.md の「AI活用シリーズ」を読んでから始めて。
 まだ出していない号のうち一番上のものを、maker サブエージェントで outputs/ai/volN/note-post.txt に書き、
 checker サブエージェントでチェックして直して。形式は outputs/fe/note-post.txt と同じ。
-できたら outputs/release/fe-vol1/MUSE.md を手本に outputs/ai/volN/MUSE.md を作って。
+checker の判定が「合格」になったら、outputs/ai/volN/checked.txt に合格した日付と checker の判定の要約を書き、
+outputs/release/fe-vol1/MUSE.md を手本に outputs/ai/volN/MUSE.md を作って。
+（checked.txt がない号は、run.sh が公開キットにしない。要修正のままなら checked.txt は作らない）
 （公開キットへの分割は scripts/run.sh が自動でやるので、ここではしない）
 実際にやっていないこと（まだ起きていない売上など）が必要な号は、書かずに board.md で「確認待ち」にして理由を書く。
 ```
