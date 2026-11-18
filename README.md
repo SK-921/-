@@ -33,6 +33,11 @@ Claude Code に「判断軸・仕事ボード・実行チーム・定期実行�
 ```cron
 0 * * * 1-5 /path/to/jarvis/scripts/run.sh hourly
 ```
+稼ぐプロジェクト（毎朝の無料記事と、毎週日曜の有料記事。できた公開キットは自動で GitHub に送られ、Muse が拾う）：
+```cron
+20 7 * * * /path/to/jarvis/scripts/run.sh daily
+40 9 * * 0 /path/to/jarvis/scripts/run.sh weekly
+```
 ログは `logs/日付.log` に残ります。Windows はタスクスケジューラで `claude -p "..."` を登録してください。
 
 ## 注意
