@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>FE figures</title>
+<style>
+  :root {
+    --ink: #1f2937;
+    --sub: #4b5563;
+    --line: #cbd5e1;
+    --blue: #2563eb;
+    --blue-bg: #e8f0fe;
+    --blue-mid: #bfd3fb;
+    --orange: #ea580c;
+    --orange-bg: #fff1e6;
+    --green: #15803d;
+    --green-bg: #e7f6ec;
+    --gray-bg: #f3f4f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #ffffff;
+    color: var(--ink);
+    font-family: "IPAPGothic", "IPAGothic", sans-serif;
+    padding: 0;
+  }
+  .fig {
+    width: 800px;
+    padding: 36px 40px 40px;
+    background: #ffffff;
+    margin-bottom: 40px;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 20px;
+    color: var(--blue);
+    background: var(--blue-bg);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 34px;
+    line-height: 1.35;
+    margin-bottom: 26px;
+    font-weight: bold;
+  }
+  .row { display: flex; gap: 16px; align-items: stretch; }
+  .col { display: flex; flex-direction: column; gap: 14px; }
+  .box {
+    border: 3px solid var(--line);
+    border-radius: 14px;
+    padding: 16px 18px;
+    font-size: 26px;
+    line-height: 1.45;
+    background: #fff;
+  }
+  .box.blue { border-color: var(--blue); background: var(--blue-bg); }
+  .box.orange { border-color: var(--orange); background: var(--orange-bg); }
+  .box.green { border-color: var(--green); background: var(--green-bg); }
+  .box.gray { border-color: var(--line); background: var(--gray-bg); }
+  .label { font-size: 21px; color: var(--sub); margin-bottom: 4px; }
+  .big { font-size: 40px; font-weight: bold; letter-spacing: 1px; }
+  .mono { font-family: "IPAGothic", monospace; letter-spacing: 2px; }
+  .arrow-down { text-align: center; font-size: 24px; color: var(--sub); line-height: 1.3; margin: 10px 0; }
+  .arrow-down b { font-size: 32px; font-weight: normal; margin-right: 8px; }
+  .note { font-size: 22px; color: var(--sub); margin-top: 18px; line-height: 1.5; }
+  .key { color: var(--orange); font-weight: bold; }
+  .ok { color: var(--green); font-weight: bold; }
+  .b { font-weight: bold; }
+  .center { text-align: center; }
+
+  /* cover */
+  #cover { width: 640px; height: 335px; padding: 0; margin-bottom: 40px; position: relative; overflow: hidden;
+           background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 70%, #3b82f6 100%); color: #fff; }
+  #cover .inner { position: absolute; inset: 0; padding: 30px 34px; display: flex; flex-direction: column; }
+  #cover .small { font-size: 17px; opacity: .9; letter-spacing: 1px; }
+  #cover .title { font-size: 40px; font-weight: bold; line-height: 1.25; margin-top: 10px; }
+  #cover .subtitle { font-size: 19px; margin-top: 12px; opacity: .95; }
+  #cover .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
+  #cover .chip { font-size: 15px; background: rgba(255,255,255,.16); border: 1.5px solid rgba(255,255,255,.55);
+                 padding: 4px 10px; border-radius: 999px; }
+  #cover .badge { position: absolute; right: 30px; top: 28px; background: #fff; color: #1e3a8a; font-weight: bold;
+                  font-size: 17px; padding: 8px 12px; border-radius: 10px; text-align: center; line-height: 1.3; }
+
+  /* fig2 stack/queue */
+  .stack { width: 200px; margin: 0 auto; border: 4px solid var(--ink); border-top: none; border-radius: 0 0 12px 12px;
+           padding: 10px; display: flex; flex-direction: column-reverse; gap: 8px; min-height: 250px; }
+  .cell { border: 3px solid var(--blue); background: var(--blue-bg); border-radius: 8px; text-align: center;
+          font-size: 30px; font-weight: bold; padding: 8px 0; }
+  .cell.top { border-color: var(--orange); background: var(--orange-bg); }
+  .queue { display: flex; gap: 8px; border-top: 4px solid var(--ink); border-bottom: 4px solid var(--ink);
+           padding: 10px 12px; }
+  .queue .cell { width: 64px; }
+
+  /* fig3 pyramid */
+  .pyr { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .lvl { text-align: center; color: #fff; font-size: 26px; font-weight: bold; padding: 14px 0; border-radius: 6px; }
+
+  /* fig4 osi */
+  .osi { display: flex; flex-direction: column; gap: 6px; }
+  .osi .r { display: flex; align-items: center; border-radius: 10px; font-size: 24px; overflow: hidden; border: 2px solid var(--line); }
+  .osi .n { width: 92px; text-align: center; font-weight: bold; padding: 10px 0; background: var(--gray-bg); }
+  .osi .h { width: 70px; text-align: center; font-weight: bold; font-size: 30px; color: var(--orange); }
+  .osi .nm { width: 280px; font-weight: bold; }
+  .osi .ex { flex: 1; color: var(--sub); font-size: 22px; padding-right: 12px; }
+  .osi .r.hl { border-color: var(--blue); background: var(--blue-bg); }
+
+  /* fig5 keys */
+  .flow { display: flex; align-items: center; gap: 10px; }
+  .who { width: 96px; flex: none; text-align: center; font-size: 24px; font-weight: bold; }
+  .who .ic { display: block; height: 58px; position: relative; }
+  .person { position: absolute; left: 50%; transform: translateX(-50%); top: 0; width: 44px; height: 58px; }
+  .person::before { content: ""; position: absolute; left: 50%; transform: translateX(-50%); top: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--ink); }
+  .person::after { content: ""; position: absolute; left: 0; bottom: 4px; width: 44px; height: 28px; border-radius: 22px 22px 6px 6px; background: var(--ink); }
+  .arr { font-size: 32px; color: var(--sub); }
+  .keybox { flex: 1; border-radius: 12px; padding: 12px 8px; font-size: 24px; line-height: 1.4; text-align: center; border: 3px solid; }
+
+  /* fig6 sql */
+  .step { display: flex; align-items: center; gap: 14px; }
+  .kw { width: 190px; flex: none; text-align: center; font-family: "IPAGothic", monospace; font-weight: bold; font-size: 26px;
+        color: #fff; background: var(--blue); padding: 12px 0; border-radius: 10px; }
+  .kw.dim { background: #94a3b8; }
+  .what { flex: 1; font-size: 24px; line-height: 1.4; }
+  .num { font-weight: bold; color: var(--orange); white-space: nowrap; }
+
+  /* fig7 availability */
+  .net { display: flex; align-items: center; justify-content: center; gap: 0; margin: 10px 0 6px; }
+  .wire { width: 46px; height: 4px; background: var(--ink); }
+  .dev { border: 3px solid var(--ink); border-radius: 12px; padding: 10px 16px; text-align: center; font-size: 24px; font-weight: bold; background: #fff; min-width: 140px; }
+  .dev small { display: block; font-size: 22px; color: var(--blue); }
+  .par { display: flex; flex-direction: column; gap: 16px; border-left: 4px solid var(--ink); border-right: 4px solid var(--ink); padding: 0; }
+  .prow { display: flex; align-items: center; }
+  .wire.s { width: 26px; }
+  .par .dev { min-width: 150px; }
+  .calc { font-size: 25px; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<!-- ======================= COVER 1280x670 ======================= -->
+<div id="cover">
+  <div class="inner">
+    <div class="small">基本情報技術者試験（FE）</div>
+    <div class="title">科目A 7分野の<br>要点まとめ</div>
+    <div class="subtitle">要点・覚え方・間違えやすいポイント</div>
+    <div class="chips">
+      <span class="chip">基礎理論</span><span class="chip">アルゴリズム</span><span class="chip">コンピュータ構成</span>
+      <span class="chip">ネットワーク</span><span class="chip">セキュリティ</span><span class="chip">データベース</span><span class="chip">計算問題</span>
+    </div>
+  </div>
+  <div class="badge">自作例題<br>7問つき</div>
+</div>
+
+<!-- ======================= FIG1 基数変換 ======================= -->
+<div class="fig" id="fig1">
+  <div class="tag">第1章 基礎理論</div>
+  <h2>10進数 → 16進数は「2進数を通って」変換する</h2>
+  <div class="box gray center"><span class="label">例</span><br><span class="big">45.625</span></div>
+  <div class="arrow-down"><b>↓</b>整数部分と小数部分に分ける</div>
+  <div class="row">
+    <div class="box blue" style="flex:1">
+      <div class="label">整数部分 45<br>2で割って余りを<span class="key">下から</span>読む</div>
+      <div class="big mono">101101</div>
+    </div>
+    <div class="box blue" style="flex:1">
+      <div class="label">小数部分 .625<br>2を掛けて<span class="key">上から</span>読む</div>
+      <div class="big mono">.101</div>
+    </div>
+  </div>
+  <div class="arrow-down"><b>↓</b>小数点を基準に4桁ずつ区切る</div>
+  <div class="row" style="justify-content:center; gap:10px;">
+    <div class="box gray center"><div class="big mono">0010</div><div class="label">左に0を足す</div></div>
+    <div class="box gray center"><div class="big mono">1101</div><div class="label">&nbsp;</div></div>
+    <div class="box gray center" style="border:none;background:none;padding:16px 4px;"><div class="big">.</div></div>
+    <div class="box gray center"><div class="big mono">1010</div><div class="label">右に0を足す</div></div>
+  </div>
+  <div class="arrow-down"><b>↓</b>4桁ごとに16進数1桁へ</div>
+  <div class="row" style="justify-content:center; gap:10px;">
+    <div class="box green center" style="width:140px"><div class="big">2</div></div>
+    <div class="box green center" style="width:140px"><div class="big">D</div></div>
+    <div class="box center" style="border:none;padding:16px 4px;"><div class="big">.</div></div>
+    <div class="box green center" style="width:140px"><div class="big">A</div></div>
+  </div>
+  <div class="note">答え <span class="ok">2D.A</span><br>小数部分の0は<span class="key">右</span>に足す（左に足すと 0101＝5 になる）</div>
+</div>
+
+<!-- ======================= FIG2 スタックとキュー ======================= -->
+<div class="fig" id="fig2">
+  <div class="tag">第2章 アルゴリズムとデータ構造</div>
+  <h2>スタックは「お皿」、キューは「レジの行列」</h2>
+  <div class="row" style="gap:28px;">
+    <div class="col" style="flex:1; align-items:center;">
+      <div class="b" style="font-size:28px;">スタック（LIFO）</div>
+      <div style="font-size:22px; color:var(--sub);">後に入れたものを先に取り出す</div>
+      <div style="font-size:24px; margin-top:4px;"><span class="key">push ↓</span>　　<span class="key">↑ pop</span></div>
+      <div class="stack">
+        <div class="cell">4</div>
+        <div class="cell">1</div>
+        <div class="cell top">6</div>
+      </div>
+      <div style="font-size:22px; color:var(--sub); text-align:center;">出入口は<span class="b">上だけ</span><br>次に pop されるのは 6</div>
+    </div>
+    <div class="col" style="flex:1.2; align-items:center;">
+      <div class="b" style="font-size:28px;">キュー（FIFO）</div>
+      <div style="font-size:22px; color:var(--sub);">先に入れたものを先に取り出す</div>
+      <div style="height:62px;"></div>
+      <div class="row" style="align-items:center; gap:8px;">
+        <div style="font-size:22px; text-align:center;" class="key">出る<br>←</div>
+        <div class="queue">
+          <div class="cell top">4</div>
+          <div class="cell">1</div>
+          <div class="cell">6</div>
+        </div>
+        <div style="font-size:22px; text-align:center;" class="key">入る<br>←</div>
+      </div>
+      <div style="height:30px;"></div>
+      <div style="font-size:22px; color:var(--sub); text-align:center;">入口と出口が<span class="b">反対側</span><br>次に出るのは 4</div>
+    </div>
+  </div>
+  <div class="note">同じ順番（4 → 1 → 6）で入れても、次に取り出される値が違う。問題は箱を紙に描いて追うと間違えにくい。</div>
+</div>
+
+<!-- ======================= FIG3 記憶階層 ======================= -->
+<div class="fig" id="fig3">
+  <div class="tag">第3章 コンピュータ構成</div>
+  <h2>記憶装置は「上ほど速い・小さい・高い」</h2>
+  <div class="row" style="align-items:center; gap:18px;">
+    <div style="width:90px; text-align:center; font-size:22px; line-height:1.4;" class="key">速い<br>小容量<br>高い<br><span style="font-size:40px;">↑</span></div>
+    <div class="pyr" style="flex:1;">
+      <div class="lvl" style="width:34%; background:#1e3a8a;">レジスタ</div>
+      <div class="lvl" style="width:56%; background:#2563eb;">キャッシュ（SRAM）</div>
+      <div class="lvl" style="width:78%; background:#3b82f6;">主記憶（DRAM）</div>
+      <div class="lvl" style="width:100%; background:#93c5fd; color:#1e3a8a;">SSD・HDD</div>
+    </div>
+    <div style="width:90px; text-align:center; font-size:22px; line-height:1.4; color:var(--sub);"><span style="font-size:40px;">↓</span><br>遅い<br>大容量<br>安い</div>
+  </div>
+  <div class="box blue" style="margin-top:28px;">
+    <div class="b" style="margin-bottom:6px;">実効アクセス時間 ＝「当たり × 速い」＋「外れ × 遅い」</div>
+    <div style="font-size:24px;">ヒット率 × キャッシュの時間 ＋（1 − ヒット率）× 主記憶の時間</div>
+  </div>
+  <div class="box gray" style="margin-top:12px; font-size:24px;">
+    例：キャッシュ 4ns、主記憶 70ns、ヒット率 95%<br>
+    0.95 × 4 ＋ 0.05 × 70 ＝ 3.8 ＋ 3.5 ＝ <span class="ok">7.3ns</span><br>答えは 4 と 70 の間で、4 に近くなる
+  </div>
+</div>
+
+<!-- ======================= FIG4 OSI ======================= -->
+<div class="fig" id="fig4">
+  <div class="tag">第4章 ネットワーク</div>
+  <h2>OSI 7階層は下から「物・デ・ネ・ト・セ・プ・ア」</h2>
+  <div class="osi">
+    <div class="r"><div class="n">第7層</div><div class="h">ア</div><div class="nm">アプリケーション層</div><div class="ex">HTTP、SMTP など</div></div>
+    <div class="r"><div class="n">第6層</div><div class="h">プ</div><div class="nm">プレゼンテーション層</div><div class="ex">文字コード・圧縮・暗号化</div></div>
+    <div class="r"><div class="n">第5層</div><div class="h">セ</div><div class="nm">セッション層</div><div class="ex">通信の開始〜終了の管理</div></div>
+    <div class="r"><div class="n">第4層</div><div class="h">ト</div><div class="nm">トランスポート層</div><div class="ex">TCP、UDP</div></div>
+    <div class="r hl"><div class="n">第3層</div><div class="h">ネ</div><div class="nm">ネットワーク層</div><div class="ex"><span class="b" style="color:var(--blue)">ルータ</span>（IPアドレス）</div></div>
+    <div class="r hl"><div class="n">第2層</div><div class="h">デ</div><div class="nm">データリンク層</div><div class="ex"><span class="b" style="color:var(--blue)">L2スイッチ</span>（MAC）</div></div>
+    <div class="r hl"><div class="n">第1層</div><div class="h">物</div><div class="nm">物理層</div><div class="ex"><span class="b" style="color:var(--blue)">リピータ</span>（増幅だけ）</div></div>
+  </div>
+  <div class="note">番号は<span class="key">下から</span>数える。機器は「何を見て中継するか」で層が決まる（IPアドレスならルータ、MACアドレスならL2スイッチ、中身を見ずに増幅するだけならリピータ）。</div>
+</div>
+
+<!-- ======================= FIG5 鍵 ======================= -->
+<div class="fig" id="fig5">
+  <div class="tag">第5章 セキュリティ</div>
+  <h2>暗号は「相手の鍵」、署名は「自分の鍵」</h2>
+  <div class="box blue" style="padding:18px;">
+    <div class="b" style="font-size:27px; margin-bottom:12px;">暗号化（内容を相手にしか読めなくする）</div>
+    <div class="flow">
+      <div class="who"><span class="ic"><i class="person"></i></span>送信者</div>
+      <div class="keybox" style="border-color:var(--blue); background:#fff;">
+        <span class="key">受信者の<br>公開鍵</span>で<br>暗号化
+      </div>
+      <div class="arr">→</div>
+      <div class="keybox" style="border-color:var(--blue); background:#fff;">
+        <span class="key">受信者の<br>秘密鍵</span>で<br>復号
+      </div>
+      <div class="who"><span class="ic"><i class="person"></i></span>受信者</div>
+    </div>
+  </div>
+  <div class="box green" style="padding:18px; margin-top:16px;">
+    <div class="b" style="font-size:27px; margin-bottom:12px;">デジタル署名（送信者本人が書いたと証明する）</div>
+    <div class="flow">
+      <div class="who"><span class="ic"><i class="person"></i></span>送信者</div>
+      <div class="keybox" style="border-color:var(--green); background:#fff;">
+        <span class="key">送信者の<br>秘密鍵</span>で<br>署名を作る
+      </div>
+      <div class="arr">→</div>
+      <div class="keybox" style="border-color:var(--green); background:#fff;">
+        <span class="key">送信者の<br>公開鍵</span>で<br>検証する
+      </div>
+      <div class="who"><span class="ic"><i class="person"></i></span>受信者</div>
+    </div>
+  </div>
+  <div class="note">秘密鍵は持ち主しか持っていない、という一点から考えると迷わない。署名だけでは内容は隠れない。</div>
+</div>
+
+<!-- ======================= FIG6 SQL ======================= -->
+<div class="fig" id="fig6">
+  <div class="tag">第6章 データベース</div>
+  <h2>SQL は「書く順」ではなく「処理する順」で追う</h2>
+  <div class="col" style="gap:10px;">
+    <div class="step"><div class="kw">FROM</div><div class="what">表「受講記録」を読む　<span class="num">7行</span></div></div>
+    <div class="arrow-down" style="margin:0; font-size:30px;">↓</div>
+    <div class="step"><div class="kw">WHERE</div><div class="what">行をふるいにかける（時間 &gt;= 2）　<span class="num">5行</span></div></div>
+    <div class="arrow-down" style="margin:0; font-size:30px;">↓</div>
+    <div class="step"><div class="kw">GROUP BY</div><div class="what">学生IDごとにまとめる　<span class="num">3グループ</span><br><span style="font-size:21px;color:var(--sub);">S01：3,4　S02：2,6　S03：2</span></div></div>
+    <div class="arrow-down" style="margin:0; font-size:30px;">↓</div>
+    <div class="step"><div class="kw">HAVING</div><div class="what">グループを絞る（COUNT(*) &gt;= 2）　<span class="num">2グループ</span></div></div>
+    <div class="arrow-down" style="margin:0; font-size:30px;">↓</div>
+    <div class="step"><div class="kw dim">SELECT</div><div class="what">表示する列を選ぶ（学生ID、SUM(時間)）</div></div>
+    <div class="arrow-down" style="margin:0; font-size:30px;">↓</div>
+    <div class="step"><div class="kw dim">ORDER BY</div><div class="what">並べ替え　→　<span class="ok">S01 7、S02 8</span></div></div>
+  </div>
+  <div class="note"><span class="b">WHERE は「グループの前」、HAVING は「グループの後」。</span>集約関数（SUM、COUNT など）の条件は HAVING に書く。</div>
+</div>
+
+<!-- ======================= FIG7 稼働率 ======================= -->
+<div class="fig" id="fig7">
+  <div class="tag">第7章 計算問題まとめ</div>
+  <h2>稼働率は「並列をまとめてから、直列を掛ける」</h2>
+  <div class="row" style="gap:14px;">
+    <div class="box gray" style="flex:1; font-size:24px;"><span class="b">直列</span>（1台でも止まると止まる）<br>A × B</div>
+    <div class="box gray" style="flex:1; font-size:24px;"><span class="b">並列</span>（1台動けばよい）<br>1 −（1 − A）×（1 − B）</div>
+  </div>
+  <div class="net" style="margin-top:28px;">
+    <div style="font-size:22px; color:var(--sub); margin-right:6px;">入口</div>
+    <div class="wire"></div>
+    <div class="dev">装置A<small>0.9</small></div>
+    <div class="wire"></div>
+    <div class="par">
+      <div class="prow"><div class="wire s"></div><div class="dev">装置B<small>0.8</small></div><div class="wire s"></div></div>
+      <div class="prow"><div class="wire s"></div><div class="dev">装置B<small>0.8</small></div><div class="wire s"></div></div>
+    </div>
+    <div class="wire"></div>
+    <div style="font-size:22px; color:var(--sub); margin-left:6px;">出口</div>
+  </div>
+  <div class="box blue calc" style="margin-top:24px;">
+    ① 並列部分：1 −（0.2 × 0.2）＝ 1 − 0.04 ＝ <span class="b">0.96</span><br>
+    ② 装置Aと直列：0.9 × 0.96 ＝ <span class="ok">0.864</span>
+  </div>
+  <div class="note">稼働率 ＝ MTBF ÷（MTBF ＋ MTTR）<br>装置A：450 ÷ 500 ＝ 0.9　装置B：320 ÷ 400 ＝ 0.8</div>
+</div>
+
+</body>
+</html>

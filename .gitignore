@@ -2,3 +2,4 @@ logs/
 .env
 .env.*
 .claude/settings.local.json
+outputs/fe/images/*.png
