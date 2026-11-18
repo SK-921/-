@@ -1,7 +1,11 @@
 """OpenAI の画像生成 API（ChatGPT の画像生成と同じ仕組み）に、LINE スタンプ16個ぶんのシートを描いてもらう。
 
 使い方:
-  python3 scripts/stamps/gen_sheet.py <セットのフォルダ> "<キャラクターの説明>" [--model gpt-image-1]
+  python3 scripts/stamps/gen_sheet.py <セットのフォルダ> "<キャラクターの説明>" --prompt-only   ← 課金なし（おすすめ）
+  python3 scripts/stamps/gen_sheet.py <セットのフォルダ> "<キャラクターの説明>" [--model gpt-image-1]   ← API（従量課金）
+
+--prompt-only：API を呼ばず、ChatGPT に貼る頼み方を <セット>/src/prompt.txt に書くだけ。
+  ChatGPT で描いてもらった絵（背景透明の PNG）を <セット>/src/chatgpt-sheet.png に置いてから build_set.py を動かす。
 
 例:
   python3 scripts/stamps/gen_sheet.py outputs/line-stamp/shiba "まるい柴犬。茶色と白、太い輪郭線"
@@ -30,7 +34,7 @@ PROMPT = """LINEのアニメーションスタンプ用に、オリジナルの�
 
 条件
 - 4列×4行のグリッドに16個を並べる。各スタンプの間には、何も描かない透明なすき間をはっきり空ける
-- 背景は透明。各スタンプの外枠や区切り線は描かない
+- 背景は透明（PNG で、背景を透過にして出力）。各スタンプの外枠や区切り線は描かない
 - 16個とも同じキャラクター（形・色・線の太さを完全にそろえる）
 - 既存のキャラクター、企業のマスコット、有名な作品に似せない。ロゴやサービス名は描かない
 - やわらかい色、こげ茶色の太めの輪郭線、かわいいゆるいタッチ
@@ -52,12 +56,16 @@ def main() -> None:
     ap.add_argument("set_dir")
     ap.add_argument("character")
     ap.add_argument("--model", default=os.environ.get("OPENAI_IMAGE_MODEL", "gpt-image-1"))
+    ap.add_argument("--prompt-only", action="store_true", help="API を呼ばず、頼み方だけ書く（課金なし）")
     args = ap.parse_args()
 
     src = Path(args.set_dir) / "src"
     src.mkdir(parents=True, exist_ok=True)
     prompt = build_prompt(args.character)
     (src / "prompt.txt").write_text(prompt, encoding="utf-8")
+    if args.prompt_only:
+        print(f"wrote {src / 'prompt.txt'}（ChatGPT に貼って、できた絵を {src / 'chatgpt-sheet.png'} に置く）")
+        return
 
     body = json.dumps({
         "model": args.model,
